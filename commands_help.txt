@@ -103,7 +103,7 @@ aws iam list-roles
 aws lambda create-function \
 --function-name woof_garden_cuckoo \
 --runtime python2.7 \
---role arn:aws:iam::811957829177:role/omedale_cuckoo \
+--role arn:aws:iam::811957829177:role/omedale_cuckoo  \
 --handler cuckoo.handler \
 --zip-file fileb://./package.zip
 
