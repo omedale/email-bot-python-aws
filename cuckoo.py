@@ -7,24 +7,24 @@ from jinja2 import Template
 #
 # Recipient emails or domains in the AWS Email Sandbox must be verified
 # You'll want to change this to the email you verify in SES
-FROM_ADDRESS='thewoofgardenstaff@gmail.com'
-REPLY_TO_ADDRESS='thewoofgardenstaff@gmail.com'
-
+FROM_ADDRESS='oluwafemi.medale@andela.com'
+REPLY_TO_ADDRESS='oluwafemi.medale@andela.com'
+ 
 # You'll also need to change these to email addresses you verify in AWS
 CLIENTS = [
     # Format: [email, 'first name', 'last name', 'pet name']
-    ['zoe.on.the.firefly@outlook.com', 'Zoe', 'Washburne', 'Firefly II'],
-    ['pluralsight.fernando@gmail.com', 'Fernando', 'Medina Corey', 'Riley']                
+    ['omedale@gmail.com', 'Femi', 'Medale', 'Fog II'],
+    ['omedale@yahoo.com', 'Medale', 'Oluwafemi', 'gooch']         
 ]
 
 EMPLOYEES = [
     # Content stored in this order: [email, first_name, last_name]
     # Change to any email you verify in SES
-    ['springfield.homer@yahoo.com', 'Homer', 'Simpson']
+    ['omedale@yahoo.com', 'Medale', 'Oluwafemi']
 ]
 
 # Change to the bucket you create on your AWS account
-TEMPLATE_S3_BUCKET = 'woof-garden-templates'
+TEMPLATE_S3_BUCKET = 'omedale-bucket'
 #
 #
 # End of things you need to change
@@ -126,7 +126,7 @@ def handler(event,context):
             employee_first_name = employee[1]
             html_email, plaintext_email, subject = render_come_to_work_template(employee_first_name)
             send_email(html_email, plaintext_email, subject, email)
-    elif 'daily_tasks' in event_trigger:
+    elif 'daily_task' in event_trigger:
         for employee in EMPLOYEES:
             email = []
             email.append(employee[0])
